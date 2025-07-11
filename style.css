@@ -1,165 +1,248 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: #f5f5f5;
-  color: #222;
   margin: 0;
   padding: 0;
+  background: #f2f5fa;
+  color: #232a34;
 }
 
 header, footer {
-  background: #222;
+  background: #232a34;
   color: #fff;
-  padding: 16px 0;
   text-align: center;
-  letter-spacing: 1px;
+  padding: 1.2em 0;
+  letter-spacing: 0.04em;
 }
 
 main {
-  max-width: 850px;
-  margin: 32px auto;
+  max-width: 950px;
+  margin: 2em auto;
   background: #fff;
-  box-shadow: 0 2px 10px #bbb;
-  border-radius: 8px;
-  padding: 32px 28px 28px 28px;
+  padding: 2.5em 2em 2em 2em;
+  box-shadow: 0 4px 24px rgba(30,71,122,0.09);
+  border-radius: 12px;
 }
 
-h1 {
-  font-size: 2.1em;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-}
-
-h2 {
-  font-size: 1.4em;
-  margin-bottom: 6px;
-}
-
-h3 {
-  font-size: 1.1em;
-  margin: 20px 0 8px 0;
-  color: #333;
-}
-
-.qr-img {
-  width: 85px;
-  height: 85px;
-  object-fit: contain;
-  border: 1.5px solid #b5b5b5;
-  background: #fafafa;
-  border-radius: 6px;
-  margin-top: 7px;
-}
-
-section.filtros {
+.filtros {
   display: flex;
-  gap: 12px;
-  margin-bottom: 22px;
+  gap: 1.5em;
+  margin-bottom: 2em;
   justify-content: flex-start;
 }
 
-#maquinas-listado {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 22px;
-}
-
-.maquina-item {
-  background: #f9f9f9;
-  border: 1.5px solid #bdbdbd;
-  border-radius: 8px;
-  padding: 16px 18px;
-  width: 340px;
-  box-shadow: 0 1px 4px #d3d3d3;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-}
-
-.maquina-item h3 {
-  margin: 0 0 4px 0;
-  color: #1a4a80;
-  font-size: 1.16em;
-}
-
-.maquina-item a {
-  display: inline-block;
-  margin-top: 4px;
-  color: #fff;
-  background: #1a4a80;
-  padding: 7px 20px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background 0.2s;
-}
-.maquina-item a:hover {
-  background: #13355a;
-}
-
-.historial-container {
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 20px;
-  margin-top: 24px;
-}
-
-.tab-mtto {
-  background: #e6eef6;
-  border: 1px solid #b0c4de;
-  padding: 6px 12px;
+.filtros input,
+.filtros select {
+  padding: 0.6em 1em;
+  font-size: 1.08em;
+  border: 1.5px solid #b4b4b4;
   border-radius: 4px;
-  margin: 4px 4px 12px 0;
+  background: #f6faff;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.filtros input:focus,
+.filtros select:focus {
+  border-color: #1e477a;
+}
+
+.formato-mantenimiento {
+  border: 2.2px solid #4a5e7c;
+  border-radius: 9px;
+  padding: 2em 1.5em 1.5em 1.5em;
+  margin-bottom: 2.5em;
+  background: #f7fafd;
+  box-shadow: 0 2px 12px rgba(46,61,85,0.08);
+  transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.formato-mantenimiento.clickable-maquina {
   cursor: pointer;
-  font-weight: 500;
-  color: #1a4a80;
 }
 
-.tab-mtto:hover {
-  background: #d0e1f9;
+.formato-mantenimiento.clickable-maquina:hover {
+  box-shadow: 0 8px 28px rgba(30,71,122,0.15);
+  border-color: #1e477a;
+  background: #eaf2fc;
 }
 
-.tab-mtto.active {
+.formato-mantenimiento h3 {
+  background: #e4e7ed;
+  color: #1e477a;
+  padding: 0.45em 1.1em;
+  border-radius: 3px;
+  margin-top: 0;
+  margin-bottom: 1.2em;
+  font-size: 1.18em;
   font-weight: bold;
-  background-color: #c0d4eb;
+  letter-spacing: 0.01em;
+  border-left: 7px solid #1e477a;
+  box-shadow: 0 1px 4px #d5e0f4 inset;
 }
 
-.acciones-historial button {
-  background: #1a4a80;
-  color: white;
-  padding: 8px 14px;
-  margin-right: 8px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+.formato-mantenimiento h4 {
+  margin: 1.1em 0 0.5em 0;
+  font-size: 1.08em;
+  color: #2c466e;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
-.acciones-historial button:hover {
-  background: #13355a;
-}
-
-#detalle-mantenimiento table {
-  border-collapse: collapse;
+.formato-mantenimiento table {
   width: 100%;
-  margin-top: 10px;
+  border-collapse: collapse;
+  margin: 0.7em 0 1.2em 0;
+  font-size: 1em;
 }
 
-#detalle-mantenimiento table td {
-  border: 1px solid #ddd;
-  padding: 8px;
+.formato-mantenimiento td {
+  border: 1.2px solid #b4b4b4;
+  padding: 0.5em 0.7em;
+  background: #fff;
+  min-width: 120px;
 }
 
-@media (max-width: 900px) {
-  main {
-    max-width: 99vw;
-    padding: 12px 2vw;
-  }
-  #maquinas-listado {
-    flex-direction: column;
-    align-items: center;
-  }
-  .maquina-item {
-    width: 95vw;
-  }
+.formato-mantenimiento tr:nth-child(even) td {
+  background: #f0f4fa;
+}
+
+.formato-mantenimiento .bloque {
+  margin-bottom: 1.6em;
+}
+
+.formato-mantenimiento .material-utilizado,
+.formato-mantenimiento .comentarios {
+  border: 1.5px solid #b4b4b4;
+  border-radius: 3px;
+  background: #f8fafc;
+  padding: 0.8em 1em;
+  margin: 0.5em 0 1.2em 0;
+  font-size: 1em;
+  min-height: 2.3em;
+  white-space: pre-line;
+}
+
+.formato-mantenimiento .firmas {
+  display: flex;
+  justify-content: flex-start;
+  gap: 3em;
+  margin-top: 2.2em;
+}
+
+.formato-mantenimiento .firmas .firma {
+  border-top: 1.5px solid #666;
+  width: 190px;
+  text-align: center;
+  padding-top: 0.5em;
+  font-size: 0.97em;
+  color: #444;
+  background: none;
+}
+
+.formato-mantenimiento .acciones-historial {
+  margin-top: 1.7em;
+  display: flex;
+  gap: 1.2em;
+}
+
+.formato-mantenimiento .acciones-historial button,
+.formato-mantenimiento .acciones-historial .button,
+.formato-mantenimiento .acciones-historial a.button {
+  padding: 0.7em 1.7em;
+  background: #1e477a;
+  color: #fff !important;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background .2s;
+}
+
+.formato-mantenimiento .acciones-historial button:hover,
+.formato-mantenimiento .acciones-historial .button:hover,
+.formato-mantenimiento .acciones-historial a.button:hover {
+  background: #4594e6;
+}
+
+.formato-mantenimiento img.qr-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border: 1px solid #b8c3d3;
+  background: #fff;
+  border-radius: 7px;
+  margin-left: 1em;
+}
+
+#agregar-maquina, #agregar-mantenimiento {
+  margin-top: 2.5em;
+  background: #f4f9ff;
+  border: 1.5px solid #bdd7f6;
+  padding: 1.6em 1.5em 1.2em 1.5em;
+  border-radius: 11px;
+  box-shadow: 0 2px 7px #e9eefd;
+}
+#agregar-maquina h3, #agregar-mantenimiento h3 {
+  font-size: 1.13em;
+  margin-top: 0;
+  color: #1e477a;
+}
+
+#form-maquina input,
+#form-mantenimiento input,
+#form-mantenimiento textarea,
+#form-mantenimiento select {
+  width: 96%;
+  margin-bottom: 0.9em;
+  padding: 0.45em 0.7em;
+  border: 1.2px solid #b4b4b4;
+  border-radius: 4px;
+  font-size: 1em;
+  background: #f6faff;
+  outline: none;
+  transition: border 0.2s;
+}
+
+#form-maquina input:focus,
+#form-mantenimiento input:focus,
+#form-mantenimiento textarea:focus,
+#form-mantenimiento select:focus {
+  border-color: #1e477a;
+}
+
+#form-maquina button,
+#form-mantenimiento button {
+  background: #1e477a;
+  color: #fff;
+  border: none;
+  padding: 0.7em 1.7em;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  margin-top: 0.5em;
+  transition: background .2s;
+}
+
+#form-maquina button:hover,
+#form-mantenimiento button:hover {
+  background: #4594e6;
+}
+
+fieldset {
+  border: 1px solid #d9e1ea;
+  border-radius: 7px;
+  margin: 1em 0 1.4em 0;
+  padding: 1em 1.2em 0.7em 1.2em;
+  background: #fafdff;
+}
+
+legend {
+  font-weight: 600;
+  color: #1e477a;
+  padding: 0 0.5em;
+  font-size: 1.06em;
 }
