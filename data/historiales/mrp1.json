@@ -1,0 +1,52 @@
+[
+  {
+    "fecha": "2025-03-02",
+    "trabajo": "Inspección general",
+    "empresa": "MRP1",
+    "contacto": "Luis Mendoza",
+    "ubicacion": "CDMX",
+    "comentarios": "Inspección anual.",
+    "realizo": "Ana Torres",
+    "recibio": "Luis Mendoza"
+  },
+  {
+    "fecha": "2025-04-18",
+    "trabajo": "Cambio de banda",
+    "empresa": "MRP1",
+    "contacto": "Luis Mendoza",
+    "ubicacion": "CDMX",
+    "comentarios": "Se cambió la banda principal.",
+    "realizo": "Ricardo Pérez",
+    "recibio": "Luis Mendoza"
+  },
+  {
+    "fecha": "2025-06-05",
+    "trabajo": "Lubricación",
+    "empresa": "MRP1",
+    "contacto": "Luis Mendoza",
+    "ubicacion": "CDMX",
+    "comentarios": "Lubricación de engranajes.",
+    "realizo": "Ana Torres",
+    "recibio": "Luis Mendoza"
+  },
+  {
+    "fecha": "2025-07-01",
+    "trabajo": "Revisión eléctrica",
+    "empresa": "MRP1",
+    "contacto": "Luis Mendoza",
+    "ubicacion": "CDMX",
+    "comentarios": "Revisión de conexiones eléctricas.",
+    "realizo": "Carlos Hernández",
+    "recibio": "Luis Mendoza"
+  },
+  {
+    "fecha": "2025-07-10",
+    "trabajo": "Calibración de sensores",
+    "empresa": "MRP1",
+    "contacto": "Luis Mendoza",
+    "ubicacion": "CDMX",
+    "comentarios": "Calibración completa de todos los sensores.",
+    "realizo": "Ana Torres",
+    "recibio": "Luis Mendoza"
+  }
+]
