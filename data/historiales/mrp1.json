@@ -1,52 +1,49 @@
 [
   {
-    "fecha": "2025-03-02",
-    "trabajo": "Inspección general",
-    "empresa": "MRP1",
-    "contacto": "Luis Mendoza",
-    "ubicacion": "CDMX",
-    "comentarios": "Inspección anual.",
-    "realizo": "Ana Torres",
-    "recibio": "Luis Mendoza"
-  },
-  {
-    "fecha": "2025-04-18",
-    "trabajo": "Cambio de banda",
-    "empresa": "MRP1",
-    "contacto": "Luis Mendoza",
-    "ubicacion": "CDMX",
-    "comentarios": "Se cambió la banda principal.",
-    "realizo": "Ricardo Pérez",
-    "recibio": "Luis Mendoza"
-  },
-  {
-    "fecha": "2025-06-05",
-    "trabajo": "Lubricación",
-    "empresa": "MRP1",
-    "contacto": "Luis Mendoza",
-    "ubicacion": "CDMX",
-    "comentarios": "Lubricación de engranajes.",
-    "realizo": "Ana Torres",
-    "recibio": "Luis Mendoza"
-  },
-  {
-    "fecha": "2025-07-01",
-    "trabajo": "Revisión eléctrica",
-    "empresa": "MRP1",
-    "contacto": "Luis Mendoza",
-    "ubicacion": "CDMX",
-    "comentarios": "Revisión de conexiones eléctricas.",
-    "realizo": "Carlos Hernández",
-    "recibio": "Luis Mendoza"
-  },
-  {
-    "fecha": "2025-07-10",
-    "trabajo": "Calibración de sensores",
-    "empresa": "MRP1",
-    "contacto": "Luis Mendoza",
-    "ubicacion": "CDMX",
-    "comentarios": "Calibración completa de todos los sensores.",
-    "realizo": "Ana Torres",
-    "recibio": "Luis Mendoza"
+    "id": "mrp1",
+    "nombre": "mrp1",
+    "qr": "qr_staufer.png",
+    "mantenimientos": [
+      {
+        "fecha": "2025-01-10",
+        "trabajo": "Cambio de filtro hidráulico",
+        "empresa": "Staufer Die Casting",
+        "contacto": "Ing. Ramírez",
+        "ubicacion": "Qro",
+        "tel": "4421234567",
+        "estado": "Qro",
+        "puesto": "Supervisor",
+        "fecha_compra": "2023-01-15",
+        "quien_realiza": "Oscar Luna",
+        "fecha_instalacion": "2023-02-10",
+        "modelo": "SDC-1000",
+        "tipo": "Hidráulica",
+        "serie": "57810",
+        "temp_max": "180°C",
+        "fase": "3F",
+        "voltios": "440",
+        "amperaje": "6.3A",
+        "lecturas": {
+          "toma_corriente": "220",
+          "rampeo_corriente": "225",
+          "entrada": "215",
+          "rampeo_entrada": "218",
+          "salida": "210",
+          "rampeo_salida": "212",
+          "amperaje": "5.9",
+          "rampeo_amperaje": "6.1",
+          "presion": "4.5",
+          "rampeo_presion": "5.0",
+          "aceite": "2.5",
+          "rampeo_aceite": "2.8",
+          "temperatura": "75",
+          "rampeo_temperatura": "78"
+        },
+        "material_utilizado": "Filtro nuevo, aceite sintético.",
+        "comentarios": "Cambio de filtro y revisión general.",
+        "realizo": "Oscar Luna",
+        "recibio": "Enrique Mtz"
+      }
+    ]
   }
 ]
