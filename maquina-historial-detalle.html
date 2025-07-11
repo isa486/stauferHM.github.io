@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Historial de Máquina</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -15,23 +16,20 @@
     <section id="detalle-mantenimiento"></section>
   </main>
   <footer>
-    <small>&copy; 2025 Tu Empresa</small>
+    <small>&copy; 2025 STAUFER</small>
   </footer>
   <script>
-    // Obtener parámetros de la URL
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(param);
     }
 
-    // Cargar los datos de la máquina (nombre, QR)
     function cargarDatosMaquina(idMaquina) {
       return fetch('data/maquinas.json')
         .then(res => res.json())
         .then(maquinas => maquinas.find(m => m.id === idMaquina));
     }
 
-    // Cargar historial de mantenimientos de la máquina
     function cargarHistorialMantenimientos(idMaquina) {
       return fetch(`data/historiales/${idMaquina}.json`)
         .then(res => res.json());
@@ -46,23 +44,33 @@
         cargarHistorialMantenimientos(idMaquina)
       ])
       .then(([maquina, mantenimientos]) => {
-        // Mostrar nombre de la máquina y su QR
-        document.getElementById('nombre-maquina').innerHTML =
-          maquina
-            ? `<h2>${maquina.nombre}</h2>${maquina.qr ? `<img src="qr/${maquina.qr}" alt="QR" class="qr-img">` : ''}`
-            : "<h2>Máquina no encontrada</h2>";
+        const nombreMaquina = document.getElementById('nombre-maquina');
+        const detalle = document.getElementById('detalle-mantenimiento');
+        const tabs = document.getElementById('tabs-mantenimientos');
 
-        if (!Array.isArray(mantenimientos) || mantenimientos.length === 0) {
-          document.getElementById('detalle-mantenimiento').innerHTML = '<p>No hay mantenimientos registrados para esta máquina.</p>';
-          document.getElementById('tabs-mantenimientos').innerHTML = '';
+        if (!maquina) {
+          nombreMaquina.innerHTML = '<h2>Máquina no encontrada</h2>';
           return;
         }
 
-        // Renderizar pestañas
-        const tabsDiv = document.getElementById('tabs-mantenimientos');
-        tabsDiv.innerHTML = '';
+        nombreMaquina.innerHTML = `
+          <h2>${maquina.nombre}</h2>
+          ${maquina.qr ? `<img src="qr/${maquina.qr}" alt="QR" class="qr-img">` : ''}`;
+
+        if (!Array.isArray(mantenimientos) || mantenimientos.length === 0) {
+          detalle.innerHTML = '<p>No hay mantenimientos registrados para esta máquina.</p>';
+          tabs.innerHTML = '';
+          return;
+        }
+
+        tabs.innerHTML = '';
         mantenimientos.forEach((mtto, idx) => {
-          tabsDiv.innerHTML += `<button class="tab-mtto" data-idx="${idx}" ${idx === 0 ? "style='font-weight:bold'" : ""}>${mtto.fecha} - ${mtto.trabajo}</button>`;
+          const btn = document.createElement('button');
+          btn.className = 'tab-mtto';
+          btn.dataset.idx = idx;
+          btn.textContent = `${mtto.fecha} - ${mtto.trabajo}`;
+          btn.onclick = () => mostrarDetalle(idx);
+          tabs.appendChild(btn);
         });
 
         function mostrarDetalle(idx) {
@@ -88,47 +96,38 @@
               ${mtto.voltios ? `<tr><td><strong>Voltios:</strong> ${mtto.voltios}</td></tr>` : ''}
               ${mtto.amperaje ? `<tr><td><strong>Amperaje máx:</strong> ${mtto.amperaje}</td></tr>` : ''}
             </table>
-            ${mtto.lecturas ? `
-            <h4>Lecturas</h4>
-            <table>
-              ${mtto.lecturas.toma_corriente ? `<tr><td><strong>Toma corriente:</strong> ${mtto.lecturas.toma_corriente}</td></tr>` : ''}
-              ${mtto.lecturas.rampeo_corriente ? `<tr><td><strong>Rampeo corriente:</strong> ${mtto.lecturas.rampeo_corriente}</td></tr>` : ''}
-              ${mtto.lecturas.entrada ? `<tr><td><strong>Entrada:</strong> ${mtto.lecturas.entrada}</td></tr>` : ''}
-              ${mtto.lecturas.rampeo_entrada ? `<tr><td><strong>Rampeo entrada:</strong> ${mtto.lecturas.rampeo_entrada}</td></tr>` : ''}
-              ${mtto.lecturas.salida ? `<tr><td><strong>Salida:</strong> ${mtto.lecturas.salida}</td></tr>` : ''}
-              ${mtto.lecturas.rampeo_salida ? `<tr><td><strong>Rampeo salida:</strong> ${mtto.lecturas.rampeo_salida}</td></tr>` : ''}
-              ${mtto.lecturas.amperaje ? `<tr><td><strong>Amperaje:</strong> ${mtto.lecturas.amperaje}</td></tr>` : ''}
-              ${mtto.lecturas.rampeo_amperaje ? `<tr><td><strong>Rampeo amperaje:</strong> ${mtto.lecturas.rampeo_amperaje}</td></tr>` : ''}
-              ${mtto.lecturas.presion ? `<tr><td><strong>Presión:</strong> ${mtto.lecturas.presion}</td></tr>` : ''}
-              ${mtto.lecturas.rampeo_presion ? `<tr><td><strong>Rampeo presión:</strong> ${mtto.lecturas.rampeo_presion}</td></tr>` : ''}
-              ${mtto.lecturas.aceite ? `<tr><td><strong>Aceite:</strong> ${mtto.lecturas.aceite}</td></tr>` : ''}
-              ${mtto.lecturas.rampeo_aceite ? `<tr><td><strong>Rampeo aceite:</strong> ${mtto.lecturas.rampeo_aceite}</td></tr>` : ''}
-              ${mtto.lecturas.temperatura ? `<tr><td><strong>Temperatura:</strong> ${mtto.lecturas.temperatura}</td></tr>` : ''}
-              ${mtto.lecturas.rampeo_temperatura ? `<tr><td><strong>Rampeo temperatura:</strong> ${mtto.lecturas.rampeo_temperatura}</td></tr>` : ''}
-            </table>
-            ` : ''}
-            ${mtto.material_utilizado ? `<h4>Material utilizado</h4><p>${mtto.material_utilizado}</p>` : ''}
+          `;
+
+          if (mtto.lecturas) {
+            html += '<h4>Lecturas</h4><table>';
+            Object.entries(mtto.lecturas).forEach(([clave, valor]) => {
+              const nombre = clave.replace(/_/g, ' ');
+              html += `<tr><td><strong>${nombre}:</strong> ${valor}</td></tr>`;
+            });
+            html += '</table>';
+          }
+
+          if (mtto.material_utilizado) {
+            html += `<h4>Material utilizado</h4><p>${mtto.material_utilizado}</p>`;
+          }
+
+          html += `
             <h4>Comentarios</h4>
             <p>${mtto.comentarios || ''}</p>
             <p><strong>Realizó:</strong> ${mtto.realizo || ''} &nbsp; <strong>Recibió:</strong> ${mtto.recibio || ''}</p>
             <div class="acciones-historial">
               <button onclick="window.print()">Imprimir historial</button>
-              <button onclick="window.location.href='maquinas-listado.html'">Volver al listado</button>
+              <button onclick="window.location.href='index.html'">Volver al listado</button>
             </div>
           `;
-          document.getElementById('detalle-mantenimiento').innerHTML = html;
-          // Resalta la pestaña activa
-          document.querySelectorAll('.tab-mtto').forEach((btn, i) => {
-            btn.style.fontWeight = i === idx ? 'bold' : 'normal';
+
+          detalle.innerHTML = html;
+
+          document.querySelectorAll('.tab-mtto').forEach((b, i) => {
+            b.classList.toggle('active', i === idx);
           });
         }
 
-        // Asigna eventos a las pestañas después de agregarlas al DOM
-        document.querySelectorAll('.tab-mtto').forEach(tab => {
-          tab.onclick = () => mostrarDetalle(Number(tab.dataset.idx));
-        });
-
-        // Muestra el primero por defecto
         mostrarDetalle(0);
       })
       .catch(() => {
