@@ -14,7 +14,7 @@
   <main>
     <div id="nombre-maquina"></div>
     <div id="tabs-mantenimientos"></div>
-    <section id="detalle-mantenimiento"></section>
+    <section id="detalle-mantenimiento" class="formato-mantenimiento"></section>
   </main>
   <footer>
     <small>&copy; 2025 STAUFER</small>
@@ -78,44 +78,49 @@
           const mtto = mantenimientos[idx];
           let html = `
             <h3>Mantenimiento del ${mtto.fecha}</h3>
-            <table>
-              <tr><td><strong>Trabajo:</strong> ${mtto.trabajo || ''}</td></tr>
-              <tr><td><strong>Empresa:</strong> ${mtto.empresa || ''}</td></tr>
-              <tr><td><strong>Contacto:</strong> ${mtto.contacto || ''}</td></tr>
-              <tr><td><strong>Ubicación:</strong> ${mtto.ubicacion || ''}</td></tr>
-              ${mtto.tel ? `<tr><td><strong>Tel:</strong> ${mtto.tel}</td></tr>` : ''}
-              ${mtto.estado ? `<tr><td><strong>Estado:</strong> ${mtto.estado}</td></tr>` : ''}
-              ${mtto.puesto ? `<tr><td><strong>Puesto:</strong> ${mtto.puesto}</td></tr>` : ''}
-              ${mtto.fecha_compra ? `<tr><td><strong>Fecha de compra:</strong> ${mtto.fecha_compra}</td></tr>` : ''}
-              ${mtto.quien_realiza ? `<tr><td><strong>Quién realiza:</strong> ${mtto.quien_realiza}</td></tr>` : ''}
-              ${mtto.fecha_instalacion ? `<tr><td><strong>Fecha instalación:</strong> ${mtto.fecha_instalacion}</td></tr>` : ''}
-              ${mtto.modelo ? `<tr><td><strong>Modelo:</strong> ${mtto.modelo}</td></tr>` : ''}
-              ${mtto.tipo ? `<tr><td><strong>Tipo:</strong> ${mtto.tipo}</td></tr>` : ''}
-              ${mtto.serie ? `<tr><td><strong>No. Serie:</strong> ${mtto.serie}</td></tr>` : ''}
-              ${mtto.temp_max ? `<tr><td><strong>Temp. máx:</strong> ${mtto.temp_max}</td></tr>` : ''}
-              ${mtto.fase ? `<tr><td><strong>Fase motor:</strong> ${mtto.fase}</td></tr>` : ''}
-              ${mtto.voltios ? `<tr><td><strong>Voltios:</strong> ${mtto.voltios}</td></tr>` : ''}
-              ${mtto.amperaje ? `<tr><td><strong>Amperaje máx:</strong> ${mtto.amperaje}</td></tr>` : ''}
-            </table>
+            <div class="bloque">
+              <table>
+                <tr><td><strong>Trabajo:</strong> ${mtto.trabajo || ''}</td></tr>
+                <tr><td><strong>Empresa:</strong> ${mtto.empresa || ''}</td></tr>
+                <tr><td><strong>Contacto:</strong> ${mtto.contacto || ''}</td></tr>
+                <tr><td><strong>Ubicación:</strong> ${mtto.ubicacion || ''}</td></tr>
+                ${mtto.tel ? `<tr><td><strong>Tel:</strong> ${mtto.tel}</td></tr>` : ''}
+                ${mtto.estado ? `<tr><td><strong>Estado:</strong> ${mtto.estado}</td></tr>` : ''}
+                ${mtto.puesto ? `<tr><td><strong>Puesto:</strong> ${mtto.puesto}</td></tr>` : ''}
+                ${mtto.fecha_compra ? `<tr><td><strong>Fecha de compra:</strong> ${mtto.fecha_compra}</td></tr>` : ''}
+                ${mtto.quien_realiza ? `<tr><td><strong>Quién realiza:</strong> ${mtto.quien_realiza}</td></tr>` : ''}
+                ${mtto.fecha_instalacion ? `<tr><td><strong>Fecha instalación:</strong> ${mtto.fecha_instalacion}</td></tr>` : ''}
+                ${mtto.modelo ? `<tr><td><strong>Modelo:</strong> ${mtto.modelo}</td></tr>` : ''}
+                ${mtto.tipo ? `<tr><td><strong>Tipo:</strong> ${mtto.tipo}</td></tr>` : ''}
+                ${mtto.serie ? `<tr><td><strong>No. Serie:</strong> ${mtto.serie}</td></tr>` : ''}
+                ${mtto.temp_max ? `<tr><td><strong>Temp. máx:</strong> ${mtto.temp_max}</td></tr>` : ''}
+                ${mtto.fase ? `<tr><td><strong>Fase motor:</strong> ${mtto.fase}</td></tr>` : ''}
+                ${mtto.voltios ? `<tr><td><strong>Voltios:</strong> ${mtto.voltios}</td></tr>` : ''}
+                ${mtto.amperaje ? `<tr><td><strong>Amperaje máx:</strong> ${mtto.amperaje}</td></tr>` : ''}
+              </table>
+            </div>
           `;
 
           if (mtto.lecturas) {
-            html += '<h4>Lecturas</h4><table>';
+            html += '<h4>Lecturas</h4><div class="bloque"><table>';
             Object.entries(mtto.lecturas).forEach(([clave, valor]) => {
               const nombre = clave.replace(/_/g, ' ');
               html += `<tr><td><strong>${nombre}:</strong> ${valor}</td></tr>`;
             });
-            html += '</table>';
+            html += '</table></div>';
           }
 
           if (mtto.material_utilizado) {
-            html += `<h4>Material utilizado</h4><p>${mtto.material_utilizado}</p>`;
+            html += `<h4>Material utilizado</h4><div class="material-utilizado">${mtto.material_utilizado}</div>`;
           }
 
           html += `
             <h4>Comentarios</h4>
-            <p>${mtto.comentarios || ''}</p>
-            <p><strong>Realizó:</strong> ${mtto.realizo || ''} &nbsp; <strong>Recibió:</strong> ${mtto.recibio || ''}</p>
+            <div class="comentarios">${mtto.comentarios || ''}</div>
+            <div class="firmas">
+              <div class="firma">${mtto.realizo || ''}<br>Realizó</div>
+              <div class="firma">${mtto.recibio || ''}<br>Recibió</div>
+            </div>
             <div class="acciones-historial">
               <button onclick="window.print()">Imprimir historial</button>
               <button onclick="window.location.href='index.html'">Volver al listado</button>
