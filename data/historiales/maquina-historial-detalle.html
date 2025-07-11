@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historial de Máquina</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>STAUFER DIE CASTING</h1>
+    <h2>Detalles del Historial de la Máquina</h2>
+  </header>
+  <main>
+    <div id="nombre-maquina"></div>
+    <div id="tabs-mantenimientos"></div>
+    <section id="detalle-mantenimiento"></section>
+    <!-- Formulario para agregar mantenimiento -->
+    <section id="agregar-mantenimiento">
+      <h3>Agregar nuevo mantenimiento</h3>
+      <form id="form-mantenimiento">
+        <fieldset>
+          <legend>Información General</legend>
+          <input type="date" name="fecha" required>
+          <input type="text" name="empresa" placeholder="Empresa" required>
+          <input type="text" name="contacto" placeholder="Contacto">
+          <input type="text" name="ubicacion" placeholder="Lugar" required>
+          <input type="text" name="estado" placeholder="Estado">
+          <input type="text" name="tel" placeholder="Teléfono">
+          <input type="text" name="puesto" placeholder="Puesto">
+          <input type="text" name="trabajo" placeholder="Nombre del trabajo" required>
+          <input type="date" name="fecha_compra" placeholder="Fecha de compra">
+          <input type="text" name="quien_realiza" placeholder="Quién realiza" required>
+          <input type="date" name="fecha_instalacion" placeholder="Fecha de instalación">
+        </fieldset>
+        <fieldset>
+          <legend>Información de la Unidad</legend>
+          <input type="text" name="modelo" placeholder="Modelo">
+          <input type="text" name="tipo" placeholder="Tipo">
+          <input type="text" name="serie" placeholder="No. Serie">
+          <input type="text" name="temp_max" placeholder="Temperatura máx.">
+          <input type="text" name="fase" placeholder="Fase del motor">
+          <input type="text" name="voltios" placeholder="Voltios del motor">
+          <input type="text" name="amperaje" placeholder="Amperaje de carga máxima">
+        </fieldset>
+        <fieldset>
+          <legend>Lecturas</legend>
+          <label>Voltaje de toma corriente [volts]: <input type="text" name="toma_corriente"></label>
+          <label>Rampeo corriente: <input type="text" name="rampeo_corriente"></label><br>
+          <label>Voltaje de entrada [volts]: <input type="text" name="entrada"></label>
+          <label>Rampeo entrada: <input type="text" name="rampeo_entrada"></label><br>
+          <label>Voltaje de salida [volts]: <input type="text" name="salida"></label>
+          <label>Rampeo salida: <input type="text" name="rampeo_salida"></label><br>
+          <label>Amperaje [A]: <input type="text" name="amperaje_lectura"></label>
+          <label>Rampeo amperaje: <input type="text" name="rampeo_amperaje"></label><br>
+          <label>Presión caudal [bar]: <input type="text" name="presion"></label>
+          <label>Rampeo presión: <input type="text" name="rampeo_presion"></label><br>
+          <label>Nivel aceite [Lt]: <input type="text" name="aceite"></label>
+          <label>Rampeo aceite: <input type="text" name="rampeo_aceite"></label><br>
+          <label>Temperatura [°C]: <input type="text" name="temperatura"></label>
+          <label>Rampeo temperatura: <input type="text" name="rampeo_temperatura"></label>
+        </fieldset>
+        <fieldset>
+          <legend>Material Utilizado</legend>
+          <textarea name="material_utilizado" placeholder="Material utilizado"></textarea>
+        </fieldset>
+        <fieldset>
+          <legend>Comentarios</legend>
+          <textarea name="comentarios" placeholder="Comentarios"></textarea>
+        </fieldset>
+        <input type="text" name="realizo" placeholder="Realizó (firma)">
+        <input type="text" name="recibio" placeholder="Recibió (firma)">
+        <button type="submit">Agregar mantenimiento</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <small>&copy; 2025 STAUFER</small>
+  </footer>
+  <script src="maquinas.js"></script>
+</body>
+</html>
