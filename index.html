@@ -11,13 +11,45 @@
     <h1>STAUFER DIE CASTING</h1>
     <h2>Historial Digital de Mantenimiento</h2>
   </header>
+
   <main>
     <section class="filtros"></section>
     <section id="maquinas-listado"></section>
   </main>
+
   <footer>
     <small>&copy; 2025 STAUFER</small>
   </footer>
-  <script src="maquinas-utilidades.js"></script>
+
+  <script>
+    // Mostrar listado de máquinas
+    function cargarMaquinasListado() {
+      fetch('data/maquinas.json')
+        .then(res => res.json())
+        .then(maquinas => {
+          const lista = document.getElementById('maquinas-listado');
+          lista.innerHTML = '';
+          maquinas.forEach(maquina => {
+            lista.innerHTML += `
+              <div class="maquina-item">
+                <h3>${maquina.nombre}</h3>
+                <a href="maquina-historial-detalle.html?id=${maquina.id}">Ver historial</a>
+                ${maquina.qr ? `<img src="qr/${maquina.qr}" alt="QR" class="qr-img">` : ''}
+              </div>
+            `;
+          });
+        })
+        .catch(err => {
+          document.getElementById('maquinas-listado').innerHTML = '<p>Error al cargar las máquinas.</p>';
+          console.error(err);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (document.getElementById('maquinas-listado')) {
+        cargarMaquinasListado();
+      }
+    });
+  </script>
 </body>
 </html>
