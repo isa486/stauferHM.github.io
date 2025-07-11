@@ -97,6 +97,59 @@ section.filtros {
   background: #13355a;
 }
 
+.historial-container {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 24px;
+}
+
+.tab-mtto {
+  background: #e6eef6;
+  border: 1px solid #b0c4de;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin: 4px 4px 12px 0;
+  cursor: pointer;
+  font-weight: 500;
+  color: #1a4a80;
+}
+
+.tab-mtto:hover {
+  background: #d0e1f9;
+}
+
+.tab-mtto.active {
+  font-weight: bold;
+  background-color: #c0d4eb;
+}
+
+.acciones-historial button {
+  background: #1a4a80;
+  color: white;
+  padding: 8px 14px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.acciones-historial button:hover {
+  background: #13355a;
+}
+
+#detalle-mantenimiento table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#detalle-mantenimiento table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
 @media (max-width: 900px) {
   main {
     max-width: 99vw;
