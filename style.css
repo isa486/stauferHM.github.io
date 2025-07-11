@@ -1,0 +1,287 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+header, footer {
+  background: #222;
+  color: #fff;
+  padding: 16px 0;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+main {
+  max-width: 850px;
+  margin: 32px auto;
+  background: #fff;
+  box-shadow: 0 2px 10px #bbb;
+  border-radius: 8px;
+  padding: 32px 28px 28px 28px;
+}
+
+h1 {
+  font-size: 2.1em;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: 1.4em;
+  margin-bottom: 6px;
+}
+
+h3 {
+  font-size: 1.1em;
+  margin: 20px 0 8px 0;
+  color: #333;
+}
+
+#nombre-maquina,
+#detalle-maquina-historial > h2,
+#detalle-maquina-historial > img {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+
+.qr-img {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+  border: 1.5px solid #b5b5b5;
+  background: #fafafa;
+  border-radius: 6px;
+}
+
+#tabs-mantenimientos,
+#tabs-mantenimientos-detalle {
+  margin: 22px 0 16px 0;
+  text-align: center;
+}
+
+.tab-mtto,
+.tab-mtto-detalle {
+  background: #ddd;
+  border: 1.5px solid #b5b5b5;
+  border-bottom: none;
+  color: #222;
+  border-radius: 8px 8px 0 0;
+  margin-right: 8px;
+  padding: 8px 24px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1em;
+  transition: background 0.2s;
+}
+.tab-mtto:hover,
+.tab-mtto-detalle:hover {
+  background: #c1dbf4;
+}
+.tab-mtto[style*="font-weight:bold"],
+.tab-mtto-detalle[style*="font-weight:bold"] {
+  background: #fff;
+  border-bottom: 2px solid #fff;
+  color: #1a4a80;
+}
+
+#detalle-mantenimiento,
+#detalle-mantenimiento-detalle {
+  border: 1.7px solid #aaa;
+  border-radius: 0 8px 8px 8px;
+  background: #f9f9f9;
+  padding: 20px 24px 16px 24px;
+  margin-bottom: 18px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 14px;
+  background: #fff;
+}
+
+td, th {
+  border: 1.5px solid #bdbdbd;
+  padding: 7px 12px;
+  font-size: 1em;
+}
+
+th {
+  background: #e1e1e1;
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+tr:first-child th, tr:first-child td {
+  border-top: 2.2px solid #888;
+}
+
+tr:last-child th, tr:last-child td {
+  border-bottom: 2.2px solid #888;
+}
+
+h4 {
+  background: #e1e1e1;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 1.07em;
+  margin: 18px 0 8px 0;
+  border-left: 4px solid #1a4a80;
+  letter-spacing: 0.5px;
+}
+
+.acciones-historial {
+  margin-top: 22px;
+  text-align: right;
+}
+.acciones-historial button {
+  background: #1a4a80;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 22px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-left: 12px;
+  transition: background 0.2s;
+}
+.acciones-historial button:hover {
+  background: #13355a;
+}
+
+section.filtros {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 22px;
+  justify-content: flex-start;
+}
+
+#busqueda-maquina, #filtro-ubicacion {
+  padding: 9px 16px;
+  border: 1.5px solid #bdbdbd;
+  border-radius: 5px;
+  font-size: 1em;
+  background: #f7f7f7;
+}
+
+#maquinas-listado {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.maquina-item {
+  background: #f9f9f9;
+  border: 1.5px solid #bdbdbd;
+  border-radius: 8px;
+  padding: 16px 18px;
+  width: 340px;
+  box-shadow: 0 1px 4px #d3d3d3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.maquina-item h3 {
+  margin: 0 0 4px 0;
+  color: #1a4a80;
+  font-size: 1.16em;
+}
+
+.maquina-item a {
+  display: inline-block;
+  margin-top: 4px;
+  color: #fff;
+  background: #1a4a80;
+  padding: 7px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.maquina-item a:hover {
+  background: #13355a;
+}
+
+.paginacion {
+  margin-top: 18px;
+  text-align: center;
+}
+.paginacion button {
+  background: #ddd;
+  color: #222;
+  border: 1.5px solid #b5b5b5;
+  border-radius: 6px;
+  padding: 7px 18px;
+  margin: 0 8px;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.paginacion button:disabled {
+  background: #eee;
+  color: #aaa;
+  cursor: default;
+}
+.paginacion span {
+  font-size: 1.07em;
+  font-weight: 500;
+  color: #1a4a80;
+  margin: 0 6px;
+}
+
+@media (max-width: 900px) {
+  main {
+    max-width: 99vw;
+    padding: 12px 2vw;
+  }
+  #maquinas-listado {
+    flex-direction: column;
+    align-items: center;
+  }
+  .maquina-item {
+    width: 95vw;
+  }
+}
+
+/* Estilo para simular secciones encabezadas tipo formato físico */
+.seccion-formato {
+  background: #e1e1e1;
+  color: #222;
+  font-weight: 600;
+  padding: 5px 12px;
+  border: 1.5px solid #bdbdbd;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  margin-bottom: 0;
+}
+
+.firma {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1em;
+}
+
+.firma .firmante {
+  text-align: center;
+  width: 48%;
+}
+
+.firma .firmante span {
+  display: block;
+  border-top: 1.5px solid #222;
+  margin-top: 24px;
+  padding-top: 4px;
+  font-size: 0.95em;
+  letter-spacing: 0.5px;
+}
