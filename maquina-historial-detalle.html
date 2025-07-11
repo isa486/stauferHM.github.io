@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Historial de Máquina</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
   <header>
@@ -118,6 +119,7 @@
             <div class="acciones-historial">
               <button onclick="window.print()">Imprimir historial</button>
               <button onclick="window.location.href='index.html'">Volver al listado</button>
+              <button onclick="exportarPDF()">Exportar a PDF</button>
             </div>
           `;
 
@@ -133,6 +135,16 @@
       .catch(() => {
         document.getElementById('detalle-mantenimiento').innerHTML = '<p>Error al cargar los datos de la máquina.</p>';
       });
+    }
+
+    function exportarPDF() {
+      const element = document.getElementById('detalle-mantenimiento');
+      html2pdf().from(element).set({
+        margin: 10,
+        filename: 'historial_maquina.pdf',
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      }).save();
     }
 
     document.addEventListener('DOMContentLoaded', renderHistorial);
